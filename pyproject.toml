@@ -1,7 +1,7 @@
 [project]
-name = "project2"
+name = "expense_report"
 version = "0.1.0"
-description = "Add your description here"
+description = "Expense report"
 readme = "README.md"
 authors = [
     { name = "dmzjb", email = "kubadomowicz2@wp.pl" }
