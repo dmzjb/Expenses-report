@@ -1,0 +1,8 @@
+data,kategoria,kwota,opis
+2026-08-01,Jedzenie,150.50,Zakupy w Biedronce
+2026-08-03,Transport,4.60,Bilet MPK
+2026-08-04,,120.00,Brak kategorii - tu powinien polecieć wyjątek!
+2026-08-15,Rozrywka,60.00,Kino
+2026-08-20,Jedzenie,-20.00,Zwrot kaucji za butelki (opcjonalny test wartości ujemnych)
+2026-09-02,Czynsz,bląd,Zła kwota - tu też powinien polecieć wyjątek!
+2026-09-05,Transport,250.00,Paliwo
