@@ -24,7 +24,7 @@ Clone the repository and use the `uv` tool, which will automatically create the 
 
 1. Download the code:
    ```bash
-   git clone https://github.com/dmzjb/expense_report.git
+   git clone https://github.com/dmzjb/Expenses-report.git
    cd expense_report
 
 2. Run the code:
