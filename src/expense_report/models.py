@@ -1,6 +1,7 @@
 from dataclasses import dataclass
-from decimal import Decimal
 from datetime import date
+from decimal import Decimal
+
 
 @dataclass(frozen=True)
 class Expense:
@@ -8,6 +9,7 @@ class Expense:
     category: str
     amount: Decimal
     description: str
+
 
 @dataclass(frozen=True)
 class ReportData:

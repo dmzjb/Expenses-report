@@ -1,9 +1,11 @@
-from pathlib import Path
 import csv
 from datetime import date
 from decimal import Decimal, InvalidOperation
-from .models import Expense
+from pathlib import Path
+
 from .exceptions import ExpenseValidationError
+from .models import Expense
+
 
 def wczytaj_plik(sciezka: Path) -> list[dict[str, str]]:
     """
@@ -12,6 +14,7 @@ def wczytaj_plik(sciezka: Path) -> list[dict[str, str]]:
     with sciezka.open("r", encoding="utf-8", newline="") as csvfile:
         dane = csv.DictReader(csvfile)
         return list(dane)
+
 
 def parse_expense_row(row: dict[str, str], line_number: int) -> Expense:
     """
@@ -35,9 +38,4 @@ def parse_expense_row(row: dict[str, str], line_number: int) -> Expense:
 
     descript = row["opis"].strip()
 
-    return Expense(
-        date = ok_date,
-        category = category,
-        amount= amount,
-        description= descript
-    )
+    return Expense(date=ok_date, category=category, amount=amount, description=descript)
