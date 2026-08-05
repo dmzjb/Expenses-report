@@ -1,8 +1,10 @@
 from pathlib import Path
+
 from expense_report.reader import wczytaj_plik, parse_expense_row
 from expense_report.exceptions import ExpenseValidationError
 from expense_report.models import Expense
 from expense_report.analyzer import sum_of_expenses
+from expense_report.reporter import save_report_to_json, print_report_tables
 
 def main() -> None:
     sciezka_pliku = Path("data/expenses.csv")
@@ -10,19 +12,22 @@ def main() -> None:
     
     valid_expenses: list[Expense] = []
 
-    print("Przetwarzanie danych")
     for line_number, row in enumerate(lista_wierszy, start=2):
         try:
             wydatek = parse_expense_row(row, line_number)
             valid_expenses.append(wydatek)
-        except ExpenseValidationError as e:
-            print(f"Pominięto: {e}")
+        except ExpenseValidationError:
+            pass
 
     if valid_expenses:
         report = sum_of_expenses(valid_expenses)
-        print("\nPodsumowanie")
-        print(f"Kategorie: {report.by_category}")
-        print(f"Miesiące: {report.by_month}")
+
+        print_report_tables(report)
+        
+        out_path = Path("data/report.json")
+        save_report_to_json(report, out_path)
+        print(f"\nZapisano pełny raport do pliku: {out_path}")
+        
     else:
         print("Nie znaleziono żadnych poprawnych wydatków.")
 
